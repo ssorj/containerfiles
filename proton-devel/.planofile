@@ -1,0 +1,13 @@
+image_tag = "proton-devel"
+
+@command
+def clean(app):
+    run(f"podman rmi {image_tag}")
+
+@command
+def build(app):
+    run(f"podman build -t {image_tag} .")
+
+@command
+def push(app):
+    run(f"podman push {image_tag}")

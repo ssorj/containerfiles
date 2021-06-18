@@ -1,0 +1,33 @@
+FROM fedora
+
+RUN dnf -y install git gcc-c++ cmake openssl-devel python-devel swig cyrus-sasl-devel cyrus-sasl-md5 cyrus-sasl-plain ruby-devel tox doxygen jsoncpp-devel python-sphinx rubygem-minitest
+
+# OpenTelemetry C++
+
+WORKDIR /usr/local/src
+RUN git clone --recursive https://github.com/open-telemetry/opentelemetry-cpp
+
+WORKDIR opentelemetry-cpp
+RUN mkdir bld
+
+WORKDIR bld
+RUN cmake .. -DBUILD_TESTING=OFF
+RUN make -j16
+RUN make install
+
+# Proton
+
+WORKDIR /usr/local/src
+RUN git clone https://github.com/apache/qpid-proton.git
+
+ADD opentelemetry.patch /usr/local/src/qpid-proton/opentelemetry.patch
+
+WORKDIR qpid-proton
+RUN git apply opentelemetry.patch
+RUN mkdir bld
+
+WORKDIR bld
+RUN cmake ..
+RUN make -j16
+
+RUN ldd cpp/libqpid-proton-cpp.so.12.8.0
