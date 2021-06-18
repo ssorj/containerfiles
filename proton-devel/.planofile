@@ -9,5 +9,9 @@ def build(app):
     run(f"podman build -t {image_tag} .")
 
 @command
+def shell(app):
+    run(f"podman run -it {image_tag} /bin/bash")
+
+@command
 def push(app):
     run(f"podman push {image_tag}")

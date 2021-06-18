@@ -2,14 +2,11 @@ FROM fedora
 
 RUN dnf -y install git gcc-c++ cmake openssl-devel python-devel swig cyrus-sasl-devel cyrus-sasl-md5 cyrus-sasl-plain ruby-devel tox doxygen jsoncpp-devel python-sphinx rubygem-minitest
 
-RUN git clone --branch main https://github.com/apache/qpid-proton.git
+RUN git clone https://github.com/apache/qpid-proton.git
 
-WORKDIR qpid-proton
-
+WORKDIR /usr/local/qpid-proton
 RUN mkdir bld
 
 WORKDIR bld
-
 RUN cmake ..
-
 RUN make -j16
