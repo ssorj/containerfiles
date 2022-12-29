@@ -1,21 +1,23 @@
+from plano import *
+
 image_tag = "quay.io/skupper/netcat"
 
 @command
-def build(app):
+def build():
     run(f"podman build -t {image_tag} .")
 
 @command
-def run_(app):
-    build(app)
+def run_():
+    build()
     run(f"podman run --net host {image_tag} -h")
 
 @command
-def debug(app):
-    build(app)
+def debug():
+    build()
     run(f"podman run --net host -it  --entrypoint /bin/bash {image_tag}")
 
 @command
-def push(app):
+def push():
     run("podman login quay.io")
-    build(app)
+    build()
     run(f"podman push {image_tag}")
