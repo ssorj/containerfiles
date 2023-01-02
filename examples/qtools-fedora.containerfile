@@ -17,21 +17,28 @@
 # under the License.
 #
 
-FROM python:alpine
+FROM registry.fedoraproject.org/fedora-minimal AS build
 
-RUN apk add --update gcc musl-dev openssl-dev pkgconfig
-RUN pip install --no-cache-dir build
+RUN microdnf -y install gcc openssl-devel python-build python-devel python-pip python-wheel && microdnf clean all
 
-RUN addgroup -S fritz && adduser -S fritz -G fritz
-
-# On Fedora:
-# RUN groupadd -r fritz && useradd -r -g fritz fritz
+RUN groupadd -r fritz && useradd -r -g fritz fritz
+USER fritz
 
 COPY --chown=fritz:fritz . /home/fritz/repo
-USER fritz
 WORKDIR /home/fritz/repo
-ENV PATH="/home/fritz/.local/bin:$PATH"
 
-RUN python plano install
+RUN ./plano install
+
+FROM registry.fedoraproject.org/fedora-minimal AS run
+
+RUN microdnf -y install openssl python shadow-utils && microdnf clean all
+
+RUN groupadd -r fritz && useradd -r -g fritz fritz
+USER fritz
+
+COPY --chown=fritz:fritz --from=build /home/fritz/.local /home/fritz/.local
+
+ENV PATH="/home/fritz/.local/bin:$PATH"
+ENV PYTHONPATH="/home/fritz/.local/lib/python3.10"
 
 CMD ["/home/fritz/.local/bin/qtools-self-test"]
