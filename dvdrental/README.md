@@ -34,4 +34,4 @@ Password: dvdrental
 Here's what that looks like connecting with
 [DBeaver](https://dbeaver.io/):
 
-<img src="dbeaver.png" style="max-width: 60%;"/>
+<img src="dbeaver.png" width="640"/>
