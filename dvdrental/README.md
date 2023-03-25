@@ -1,4 +1,4 @@
-# Dvdrental
+# DVD Rental
 
 A containerized example using PostgreSQL and the dvdrental sample
 database.
@@ -15,5 +15,19 @@ Connect a client:
 PGPASSWORD=dvdrental psql -h localhost dvdrental dvdrental
 ~~~
 
-Use `\dt` to list the database tables.  Use `select * from <table>;` to
-explore the sample data.  Use `\h` for help.  Use `\q` to quit.
+Use `\dt` to list the database tables.  Use `select * from <table>;`
+to explore the data.  Use `\h` for help.  Use `\q` to quit.
+
+Connection parameters:
+
+~~~
+Host:     localhost (or wherever you end up exposing it)
+Port:     5432
+Database: dvdrental
+Username: dvdrental
+Password: dvdrental
+~~~
+
+Here's what that looks like connecting with DBeaver:
+
+<img src="dbeaver.png"/>
