@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: dvdrental
+  name: dvdrental
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dvdrental
+  template:
+    metadata:
+      labels:
+        app: dvdrental
+    spec:
+      containers:
+        - name: dvdrental
+          image: quay.io/ssorj/dvdrental
+          ports:
+            - containerPort: 5432

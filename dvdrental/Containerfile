@@ -1,0 +1,11 @@
+FROM docker.io/postgres:alpine
+
+COPY dvdrental.tar /data/dvdrental.tar
+COPY init.sh /docker-entrypoint-initdb.d/init.sh
+
+ENV POSTGRES_USER=dvdrental
+ENV POSTGRES_PASSWORD=dvdrental
+ENV POSTGRES_HOST_AUTH_METHOD=scram-sha-256
+ENV POSTGRES_INITDB_ARGS=--auth-host=scram-sha-256
+
+EXPOSE 5432
