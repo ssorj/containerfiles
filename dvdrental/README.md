@@ -1,7 +1,10 @@
 # DVD Rental
 
-A containerized example using PostgreSQL and the dvdrental sample
-database.
+A containerized example using [PostgreSQL][postgres] and the
+[dvdrental][dvdrental] sample database.
+
+[postgres]: https://www.postgresql.org/
+[dvdrental]: https://www.postgresqltutorial.com/postgresql-getting-started/postgresql-sample-database/
 
 Run the server:
 
@@ -28,6 +31,7 @@ Username: dvdrental
 Password: dvdrental
 ~~~
 
-Here's what that looks like connecting with DBeaver:
+Here's what that looks like connecting with
+[DBeaver](https://dbeaver.io/):
 
 <img src="dbeaver.png"/>
