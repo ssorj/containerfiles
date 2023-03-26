@@ -3,8 +3,11 @@
 A containerized example using [PostgreSQL][postgres] and the
 [dvdrental][dvdrental] sample database.
 
+There is a [diagram][diagram] of the schema.
+
 [postgres]: https://www.postgresql.org/
 [dvdrental]: https://www.postgresqltutorial.com/postgresql-getting-started/postgresql-sample-database/
+[diagram]: https://www.postgresqltutorial.com/wp-content/uploads/2018/03/printable-postgresql-sample-database-diagram.pdf
 
 ## Run the server
 
@@ -46,6 +49,9 @@ to explore the data.  Use `\h` for help.  Use `\q` to quit.
 ## Connect using [DBeaver][dbeaver]
 
 [dbeaver]: https://dbeaver.io/
+
+Start DBeaver and navigate to **Database > New Database Connection >
+PostgreSQL**.
 
 <img src="dbeaver.png" width="640"/>
 
