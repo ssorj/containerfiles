@@ -55,7 +55,7 @@ to explore the data.  Use `\h` for help.  Use `\q` to quit.
 
 ~~~
 podman run --rm --net=host \
-    -e PGRST_DB_URI="postgres://dvdrental:dvdrental@localhost/dvdrental" \
+    -e PGRST_DB_URI="postgres://dvdrental:dvdrental@localhost:5432/dvdrental" \
     -e PGRST_DB_ANON_ROLE=dvdrental \
     docker.io/postgrest/postgrest
 ~~~
