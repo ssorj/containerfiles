@@ -14,8 +14,17 @@ spec:
       labels:
         app: dvdrental
     spec:
+      securityContext:
+        seccompProfile:
+          type: RuntimeDefault
+        runAsNonRoot: true
       containers:
         - name: dvdrental
           image: quay.io/ssorj/dvdrental
           ports:
             - containerPort: 5432
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL

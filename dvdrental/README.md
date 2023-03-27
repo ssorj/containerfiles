@@ -44,14 +44,14 @@ PGPASSWORD=dvdrental psql -h localhost dvdrental dvdrental
 ~~~
 
 Use `\dt` to list the database tables.  Use `select * from <table>;`
-to explore the data.  Use `\h` for help.  Use `\q` to quit.
+to explore the data.  Use `\?` for help.  Use `\q` to quit.
 
 ## Connect using [DBeaver][dbeaver]
 
 [dbeaver]: https://dbeaver.io/
 
 Start DBeaver and navigate to **Database > New Database Connection >
-PostgreSQL**.
+PostgreSQL**.  Use these connection settings:
 
 <img src="dbeaver.png" width="640"/>
 
@@ -65,3 +65,5 @@ podman run --rm --net=host \
     -e PGRST_DB_ANON_ROLE=dvdrental \
     docker.io/postgrest/postgrest
 ~~~
+
+<!-- http://localhost:3000/film -->

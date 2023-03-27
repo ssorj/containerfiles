@@ -1,6 +1,6 @@
 FROM docker.io/postgres:alpine
 
-COPY dvdrental.tar /data/dvdrental.tar
+COPY dvdrental.tar.gz /dvdrental.tar.gz
 COPY init.sh /docker-entrypoint-initdb.d/init.sh
 
 ENV POSTGRES_USER=dvdrental
