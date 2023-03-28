@@ -1,5 +1,13 @@
 FROM docker.io/postgres:alpine
 
+# RUN ls -ld /var/lib/postgresql /var/lib/postgresql/data
+# RUN chown -R $(id -u):$(id -g) /var/lib/postgresql
+# RUN chmod -R 777 /var/lib/postgresql
+# RUN ls -ld /var/lib/postgresql /var/lib/postgresql/data
+# RUN getent passwd $(id -u)
+# RUN postgres -V
+# USER postgres
+
 COPY dvdrental.tar.gz /dvdrental.tar.gz
 COPY init.sh /docker-entrypoint-initdb.d/init.sh
 
